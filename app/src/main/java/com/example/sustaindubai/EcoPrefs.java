@@ -1,0 +1,56 @@
+package com.example.sustaindubai;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+public class EcoPrefs {
+
+    private static final String PREF_NAME = "SustainDubai_Data";
+
+    private static final String KEY_POINTS = "points";
+    private static final String KEY_CO2 = "co2_saved";
+    private static final String KEY_WATER = "water_saved";
+    private static final String KEY_WASTE = "waste_diverted";
+
+    private final SharedPreferences prefs;
+
+    public EcoPrefs(Context context) {
+        prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+    public int getPoints() {
+        return prefs.getInt(KEY_POINTS, 0);
+    }
+
+    public void addPoints(int delta) {
+        prefs.edit().putInt(KEY_POINTS, getPoints() + delta).apply();
+    }
+
+    public int getCo2Saved() {
+        return prefs.getInt(KEY_CO2, 0);
+    }
+
+    public void addCo2Saved(int kg) {
+        prefs.edit().putInt(KEY_CO2, getCo2Saved() + kg).apply();
+    }
+
+    public int getWaterSaved() {
+        return prefs.getInt(KEY_WATER, 0);
+    }
+
+    public void addWaterSaved(int liters) {
+        prefs.edit().putInt(KEY_WATER, getWaterSaved() + liters).apply();
+    }
+
+    public int getWasteDiverted() {
+        return prefs.getInt(KEY_WASTE, 0);
+    }
+
+    public void addWasteDiverted(int kg) {
+        prefs.edit().putInt(KEY_WASTE, getWasteDiverted() + kg).apply();
+    }
+
+    public void resetAll() {
+        prefs.edit().clear().apply();
+    }
+}
