@@ -17,13 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav = findViewById(R.id.bottom_nav);
 
-        // Load Dashboard fragment first (middle tab)
+        // Set Dashboard as default selected tab
+        bottomNav.setSelectedItemId(R.id.nav_dashboard);
+
+        // Load Dashboard fragment first
         loadFragment(new DashboardFragment());
 
-        // Wire bottom navigation
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
-
             int itemId = item.getItemId();
             if (itemId == R.id.nav_dashboard) {
                 selectedFragment = new DashboardFragment();
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_rewards) {
                 selectedFragment = new RewardsFragment();
             }
-
             if (selectedFragment != null) {
                 loadFragment(selectedFragment);
             }

@@ -49,7 +49,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@android:drawable/ic_menu_myplaces"
-                android:tint="#1B5E3C" />
+                app:tint="#1B5E3C" />
         </LinearLayout>
 
         <!-- Points Card -->
