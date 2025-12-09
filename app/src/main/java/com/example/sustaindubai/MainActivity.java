@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
+
             if (itemId == R.id.nav_dashboard) {
                 selectedFragment = new DashboardFragment();
             } else if (itemId == R.id.nav_activities) {
                 selectedFragment = new ActivitiesFragment();
             } else if (itemId == R.id.nav_rewards) {
                 selectedFragment = new RewardsFragment();
+            } else if (itemId == R.id.nav_news) {       // <--- NEW CODE
+                selectedFragment = new NewsFragment();   // <--- NEW CODE
             }
+
             if (selectedFragment != null) {
                 loadFragment(selectedFragment);
             }

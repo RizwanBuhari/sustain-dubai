@@ -65,18 +65,28 @@ public class DashboardFragment extends Fragment {
 
     private void updateStats() {
         int points = prefs.getPoints();
-        int co2 = prefs.getCo2Saved();
-        int water = prefs.getWaterSaved();
-        int waste = prefs.getWasteDiverted();
 
-        tvPoints.setText(String.valueOf(points));
-        tvCo2.setText(co2 + " kg");
-        tvWater.setText(water + " L");
-        tvWaste.setText(waste + " kg");
+        // --- MODIFIED SECTION START ---
+        // We comment these out so the app shows the static numbers from the XML design
+        // instead of resetting them to 0.
+
+        // int co2 = prefs.getCo2Saved();
+        // int water = prefs.getWaterSaved();
+        // int waste = prefs.getWasteDiverted();
+
+        //tvPoints.setText(String.valueOf(points));
+
+        // tvCo2.setText(co2 + " kg");
+        // tvWater.setText(water + " L");
+        // tvWaste.setText(waste + " kg");
+
+        // --- MODIFIED SECTION END ---
 
         // Simple gamified level logic: 0–499 => L1, 500–999 => L2, etc.
         int level = (points / 500) + 1;
-        tvLevelLabel.setText("Level " + level + " • Desert Seedling");
+
+        // You can also comment this out if you want the static "Level 5 • Ghaf Tree" to show!
+        // tvLevelLabel.setText("Level " + level + " • Desert Seedling");
 
         int progressToNext = points % 500; // 0–499
         progressLevel.setMax(500);
